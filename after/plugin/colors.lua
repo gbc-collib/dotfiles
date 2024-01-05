@@ -1,5 +1,5 @@
-require('rose-pine').setup({
-    disable_background = true
+require('tokyonight').setup({
+    disable_background = false
 })
 
 function ColorMyPencils(color)
