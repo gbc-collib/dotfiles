@@ -1,9 +1,8 @@
-
 vim.keymap.set("n", "<leader>zz", function()
     require("zen-mode").setup {
         window = {
-            width = 150,
-            options = { }
+            width = 90,
+            options = {}
         },
     }
     require("zen-mode").toggle()
@@ -18,7 +17,7 @@ vim.keymap.set("n", "<leader>zZ", function()
     require("zen-mode").setup {
         window = {
             width = 80,
-            options = { }
+            options = {}
         },
     }
     require("zen-mode").toggle()
@@ -28,3 +27,12 @@ vim.keymap.set("n", "<leader>zZ", function()
     vim.opt.colorcolumn = "0"
     ColorMyPencils()
 end)
+-- Lua
+return {
+    "folke/zen-mode.nvim",
+    opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+    }
+}
