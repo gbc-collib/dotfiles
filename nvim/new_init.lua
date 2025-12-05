@@ -68,20 +68,29 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },                              --braces
 	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/folke/trouble.nvim" },
-
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 
 
 })
 
+
+vim.keymap.set("n", "<leader>tt", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
+
+require("trouble").setup()
+--vim.keymap.set("n", "[t", function()
+--	require("trouble").next({ skip_groups = true, jump = true });
+--end)
+--
+--vim.keymap.set("n", "]t", function()
+--	require("trouble").previous({ skip_groups = true, jump = true });
+--end)
+
+
+--markss
+
 require "marks".setup {
 	builtin_marks = { "<", ">", "^" },
 }
--- Autopair
-require("autopairs").config({
-	check_ts = true
-})
-
 --gitsigns
 require("gitsigns").setup({
 	current_line_blame = true,
@@ -111,13 +120,6 @@ require("gitsigns").setup({
 		map('n', '<leader>hb', function() gs.blame_line({ full = true }) end)
 		map('n', '<leader>hd', gs.diffthis)
 	end,
-})
-
-
---lsp
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'svelte', 'markdown', 'lua', 'rust', 'typst', 'typescript', 'javascript', 'c', 'cpp' },
-	callback = function() vim.treesitter.start() end,
 })
 
 
@@ -168,7 +170,7 @@ vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 
 
 
-require "vague".setup({ transparent = true })
+--require "vague".setup({ transparent = false })
 
 vim.cmd("colorscheme vague")
 
@@ -194,6 +196,7 @@ vim.lsp.enable({
 	"lua_ls", "cssls",
 	"rust_analyzer", "clangd",
 	"tailwindcss", "ts_ls",
+	"pylsp"
 })
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
